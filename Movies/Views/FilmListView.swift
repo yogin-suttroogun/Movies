@@ -23,7 +23,12 @@ struct FilmListView: View {
             case .loaded(let films):
                 List(films) { film in
                     NavigationLink(value: film) {
-                        Text(film.title)
+                        HStack {
+                            FilmImageView(urlPath: film.image)
+                                .frame(width: 100, height: 150)
+                                .cornerRadius(20)
+                            Text(film.title)
+                        }
                     }
                 }
                 .navigationDestination(for: Film.self) { film in
